@@ -1,57 +1,64 @@
-Ma.Valentina Serrano, 5to grupo, Sprint 6 
+# Nombre del proyecto: Qa-project-06-es
 
-Nombre del proyecto: Qa-project-06-es 
+Este proyecto está diseñado para automatizar pruebas para la creación de un kit, específicamente para probar el campo "name". El alcance de las pruebas incluye verificar limitaciones en el número de caracteres, tipos de letras, espacios, caracteres especiales, campos vacíos, entre otros.
 
-  El proyecto está creado para automatizar las pruebas para crear un kit, en especifico para testear el campo "name". Comprende las limitaciones de numero de caracteres, tipos de letras, espacios, caracteres especiales, campo vacio y otros. Dichas pruebas de automatización se ejecutan mediante una lista de comprobación que contiene 9 casos para lo que fue necesario en este orden:  
+## Proceso de automatización:
 
-  1-Instalar los paquetes esenciales: pip, pytest y request
+El proceso de automatización se llevó a cabo en los siguientes pasos:
 
-  2-En la carpeta "configuracion.py" almacenar la URL actualizada del servidor, las apis correspondientes y la ruta de los documentos.
+1. **Instalación de paquetes esenciales**: Se instaló pip, pytest y request para facilitar las pruebas.
 
-  3-Según la documentación de las apis en la carpeta "data.py" almacenamos los datos necesarios para la creación de solicitudes posteriores.
+2. **Configuración de parámetros**: Se almacenó la URL actualizada del servidor, las APIs correspondientes y las rutas de los documentos en el archivo `configuracion.py`.
 
+3. **Datos necesarios para las solicitudes**: Se recopilaron los datos necesarios para las solicitudes según la documentación de las APIs y se almacenaron en el archivo `data.py`.
 
-  4- Crear un usuario mediante la api POST /api/v1/users en la carpeta "sender_stand_request", la información correspondiente al usuario ya estaba almacenada en "data.py"
+4. **Creación de un usuario**: Se utilizó la API POST `/api/v1/users` en la carpeta `sender_stand_request` para crear un usuario. La información correspondiente al usuario estaba previamente almacenada en `data.py`.
 
-  {
-    "firstName": "Max",
-    "phone": "+10005553535",
-    "address": "8042 Lancaster Ave.Hamburg, NY"
-}
+    ```json
+    {
+        "firstName": "Max",
+        "phone": "+10005553535",
+        "address": "8042 Lancaster Ave.Hamburg, NY"
+    }
+    ```
 
-  5- Crear un kit para el usuario mediante la api POST /api/v1/kits, vinculamos este kit a ese usuario recien creado a través del Bearer Token que la creación del usuario arrojo(Este token puede variar cada vez que actualizamos el servidor pero dejo un ejemplo ya que es un parametro para la vinculacion del usuario al kit:
+5. **Creación de un kit vinculado al usuario**: Se utilizó la API POST `/api/v1/kits` para crear un kit y vincularlo al usuario recién creado. Se usó un Bearer Token obtenido tras la creación del usuario para esta vinculación. Ejemplo de headers:
 
-  headers_for_kits = {
-      'Authorization': 'Bearer 1a563bd1-27b5-4d48-8094-d99506d2a678'
-  }
+    ```python
+    headers_for_kits = {
+        'Authorization': 'Bearer 1a563bd1-27b5-4d48-8094-d99506d2a678'
+    }
+    ```
 
-  La informacion del kit que aporta api/docs es:
+    La información del kit proporcionada por `api/docs` es:
 
-{
-       "name": "Mi conjunto",
-       "card": {
-           "id": 1,
-           "name": "Para la situación"
-       },
-       "productsList": null,
-       "id": 7,
-       "productsCount": 0
-   }
+    ```json
+    {
+        "name": "Mi conjunto",
+        "card": {
+            "id": 1,
+            "name": "Para la situación"
+        },
+        "productsList": null,
+        "id": 7,
+        "productsCount": 0
+    }
+    ```
 
-Ambos estaban previamente almacenadas en la carpeta "Data.py"
-Es importante aclarar que en mi proyecto sustituí el "null" por un "1" para obtener resultado positivo de la creación del kit.
+    Nota: Se modificó el valor `null` por `1` en el campo `productsList` para obtener un resultado positivo en la creación del kit. Ambos valores estaban previamente almacenados en `data.py`.
 
+## Pruebas realizadas:
 
-LLegó el momento de probar los casos
+El proceso de pruebas siguió los siguientes pasos:
 
-Antes de empezar cualquier prueba, me asegure de estar exportando debidamente los archivos que fueran necesarios en cada carpeta y tener actualizada la URL y luego en ese orden:
+1. Se especificó la función que se deseaba probar.
+2. Se invocó la función `positive_asserts` para clasificar las respuestas positivas.
+3. Se identificaron las respuestas positivas en una lista para ordenarlas y luego probarlas individualmente.
+4. Se invocó la función `negative_asserts` para clasificar las respuestas negativas.
+5. Se identificaron las respuestas negativas en una lista para ordenarlas y luego probarlas individualmente.
 
-1-Dejé claro sobre que función deseaba testear.
-2-LLamé a la funcion positive_asserts para clasificar mis respuestas positivas. 
-3-Observé en mi lista cuales eran mis respuestas positivas para ordenarlas todas juntas y luego las probé una a una.
-4-LLamé a la funcion negative_asserts para clasificar mis respuestas negativas.
-5-Observé en mi lista cuales eran mis respuestas negativas para ordenarlas todas juntas y luego las probe una a una.
+## Resultado:
 
-Resultado: Todas las respuestas positivas pasaron el test y las negativas lo reprobaron, hace mucho sentido ya que son prácticamente las mismas pruebas pero con otro resultado esperado. 
+Todas las respuestas positivas pasaron las pruebas, mientras que las respuestas negativas no lo hicieron. Esto era esperado ya que las pruebas son esencialmente las mismas pero con diferentes resultados esperados.
 
-Muchas gracias por revisar este proyecto!
+¡Gracias por revisar este proyecto!
