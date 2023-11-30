@@ -8,11 +8,6 @@ user_body = {
     "address": "8042 Lancaster Ave.Hamburg, NY"
 }
 
-
-headers_for_kits = {
-      'Authorization': 'Bearer 1a563bd1-27b5-4d48-8094-d99506d2a678'
-  }
-
 kit_body = {
        "name": "Mi conjunto",
        "card": {
@@ -32,7 +27,7 @@ test_character_special_positive = '%$·"!"·'
 
 test_spaces_positive = 'A aaa'
 
-test_numers_positive = '123'
+test_numbers_positive = '123'
 
 test_0_characters_negative = ""
 
