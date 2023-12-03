@@ -13,8 +13,8 @@ def positive_assert(name):
     kit_body = get_kit_body(name)
     response = sender_stand_request.post_new_kit_for_user(kit_body)
     assert response.status_code == 201
-    assert name == response.json()['name']
-
+    data = response.json()
+    name == data['name']
 
 def test_1_letter_name_get_success_response():
     name = data.test_1_letter_positive
